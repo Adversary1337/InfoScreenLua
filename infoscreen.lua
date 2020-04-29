@@ -156,7 +156,7 @@ client_set_event_callback("paint", function(ctx)
                 for res, rep in pairs(replacements) do
                     place_name = name:gsub(res, rep)
                 end
-                
+
 				column_data[i] = {name, health, weapon_name, enemy_position}
 			else
 				column_data[i] = {name, health, weapon_name}
@@ -202,6 +202,8 @@ client_set_event_callback("paint", function(ctx)
 end)
 
 client_set_event_callback("shutdown", function()
-    database_write("InfoScreen_x", wnd.x)
-    database_write("InfoScreen_y", wnd.y)
+    database_write("InfoScreen", {
+        x = wnd.x,
+        y = wnd.y
+    })
 end)
